@@ -3,7 +3,7 @@ import ItemsList from "@/components/ItemsList";
 // Fetch data function
 async function getItems() {
     try {
-        const res = await fetch("http://localhost:3000/api/items", { cache: "no-store" });
+        const res = await fetch("/api/items", { cache: "no-store" });
         if (!res.ok) {
             return [];
         }
@@ -13,6 +13,7 @@ async function getItems() {
         return [];
     }
 }
+
 
 export default async function ItemsPage() {
     const items = await getItems();
