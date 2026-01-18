@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "name": "Signature Espresso",
+    "description": "Our signature rich and bold single shot of coffee. Sourced from Ethiopian highlands.",
+    "price": 3.5,
+    "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=2070&auto=format&fit=crop",
+    "category": "coffee"
+  },
+  {
+    "id": "2",
+    "name": "Classic Cappuccino",
+    "description": "Perfectly balanced Espresso with steamed milk and thick foam layer.",
+    "price": 4.5,
+    "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=2070&auto=format&fit=crop",
+    "category": "coffee"
+  },
+  {
+    "id": "3",
+    "name": "Vanilla Latte",
+    "description": "Creamy espresso with steamed milk and a touch of Madagascar vanilla syrup.",
+    "price": 5.25,
+    "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=2069&auto=format&fit=crop",
+    "category": "coffee"
+  },
+  {
+    "id": "6",
+    "name": "Matcha Green Tea Latte",
+    "description": "Smooth and creamy matcha sweetened just right and served with steamed milk.",
+    "price": 5.5,
+    "image": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=2671&auto=format&fit=crop",
+    "category": "coffee"
+  },
+  {
+    "id": "1768722181765",
+    "name": "Pizza",
+    "description": "This is pizza",
+    "price": 3.2,
+    "image": "https://imgs.search.brave.com/IwQHxDceZvVt2E076ff5oTq1twRjU62S35Pgh9BDgRE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMTYv/MTE3LzE0NS9zbWFs/bC9mcmVzaGx5LWJh/a2VkLW5lYXBvbGl0/YW4tcGl6emEtd2l0/aC1wZXBwZXJvbmkt/YW5kLW1venphcmVs/bGEtcGhvdG8uanBn",
+    "category": "others"
+  },
+  {
+    "id": "1768722738520",
+    "name": "Coffee Beans",
+    "description": "The cofffee beans",
+    "price": 1.7,
+    "image": "https://imgs.search.brave.com/aCXRZ96SIhM0_QPSe4GoKqx1opSiaAva3o7Lf1ElucE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/MS8wMi8wNC81OS9j/b2ZmZWUtMTExNzkz/M182NDAuanBn",
+    "category": "coffee"
+  },
+  {
+    "id": "1768723512325",
+    "name": "Frence Fry",
+    "description": "",
+    "price": 1.2,
+    "image": "https://imgs.search.brave.com/pt0XLINM5fv3yhlyb5pRyt51ZmYnegLoXvDLbRYDTQI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMDcv/NzAyLzA1MS9zbWFs/bC9mcmVuY2gtZnJ5/LXdpdGgtdG9tYXRv/LXNhdWNlLXBob3Rv/LmpwZw",
+    "category": "others"
+  }
+]

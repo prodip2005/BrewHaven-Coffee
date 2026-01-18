@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #FDFBF7;
+  --foreground: #2C1810;
+}
+
+@theme {
+  --font-display: 'Georgia', 'serif';
+  --font-body: 'system-ui', 'sans-serif';
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Utilities if needed */
+.text-balance {
+  text-wrap: balance;
+}
