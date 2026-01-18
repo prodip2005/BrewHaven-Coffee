@@ -1,31 +1,29 @@
-export const dynamic = "force-dynamic";
+"use client";
 
+import { useEffect, useState } from "react";
 import ItemsList from "@/components/ItemsList";
-import { headers } from "next/headers";
 
-async function getItems() {
-    try {
-        const headersList = headers();
-        const host = headersList.get("host");
+export default function ItemsPage() {
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-        const baseUrl = host
-            ? `https://${host}`
-            : process.env.NEXT_PUBLIC_VERCEL_URL;
+    useEffect(() => {
+        fetch("/api/items", { cache: "no-store" })
+            .then((res) => res.json())
+            .then((data) => setItems(data))
+            .catch((err) => {
+                console.error("Error fetching items:", err);
+            })
+            .finally(() => setLoading(false));
+    }, []);
 
-        const res = await fetch(`${baseUrl}/api/items`, {
-            cache: "no-store",
-        });
-
-        if (!res.ok) return [];
-        return res.json();
-    } catch (error) {
-        console.error("Error fetching items:", error);
-        return [];
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] text-[#6F4E37]">
+                Loading...
+            </div>
+        );
     }
-}
-
-export default async function ItemsPage() {
-    const items = await getItems();
 
     return (
         <div className="py-16 bg-[#FDFBF7] min-h-screen">
@@ -42,13 +40,7 @@ export default async function ItemsPage() {
                     </p>
                 </div>
 
-                {items.length === 0 ? (
-                    <p className="text-center text-gray-500">
-                        No items found.
-                    </p>
-                ) : (
-                    <ItemsList initialItems={items} />
-                )}
+                <ItemsList initialItems={items} />
             </div>
         </div>
     );
