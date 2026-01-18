@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 
-// ✅ In-memory dummy data (Vercel-safe)
-let  items = [
+// 🔥 VERY IMPORTANT (Vercel cache বন্ধ করে)
+export const dynamic = "force-dynamic";
+
+// ✅ In-memory dummy data
+let items = [
     {
         id: "1",
         name: "Espresso",
@@ -34,63 +37,14 @@ let  items = [
         image: "https://images.unsplash.com/photo-1551030173-122aabc4489c?q=80&w=2070&auto=format&fit=crop",
         category: "coffee",
     },
-    {
-        id: "5",
-        name: "Mocha",
-        description: "Espresso with chocolate and steamed milk.",
-        price: 5.0,
-        image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=2070&auto=format&fit=crop",
-        category: "coffee",
-    },
-    {
-        id: "6",
-        name: "Flat White",
-        description: "Velvety microfoam milk with espresso.",
-        price: 4.25,
-        image: "https://images.unsplash.com/photo-1523942839745-7848d7a9c5fa?q=80&w=2070&auto=format&fit=crop",
-        category: "coffee",
-    },
-    {
-        id: "7",
-        name: "Cold Brew",
-        description: "Slow-steeped cold coffee, smooth and refreshing.",
-        price: 4.0,
-        image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2070&auto=format&fit=crop",
-        category: "cold",
-    },
-    {
-        id: "8",
-        name: "Iced Latte",
-        description: "Chilled espresso with cold milk and ice.",
-        price: 4.5,
-        image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=2070&auto=format&fit=crop",
-        category: "cold",
-    },
-    {
-        id: "9",
-        name: "Caramel Macchiato",
-        description: "Sweet caramel with espresso and milk.",
-        price: 5.25,
-        image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=2070&auto=format&fit=crop",
-        category: "special",
-    },
-    {
-        id: "10",
-        name: "Vanilla Latte",
-        description: "Classic latte infused with vanilla syrup.",
-        price: 4.95,
-        image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2070&auto=format&fit=crop",
-        category: "special",
-    },
 ];
-
 
 // GET all items
 export async function GET() {
     return NextResponse.json(items);
 }
 
-// POST new item (temporary memory)
+// POST add new item (memory only)
 export async function POST(req) {
     try {
         const body = await req.json();
@@ -109,7 +63,7 @@ export async function POST(req) {
             price: Number(price),
             image:
                 image ||
-                "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2070&auto=format&fit=crop",
             description: description || "",
             category: category || "others",
         };
