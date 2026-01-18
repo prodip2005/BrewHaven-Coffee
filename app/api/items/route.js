@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-// 🔥 VERY IMPORTANT (Vercel cache বন্ধ করে)
+// 🔥 Vercel cache পুরোপুরি বন্ধ
 export const dynamic = "force-dynamic";
 
 // ✅ In-memory dummy data
@@ -39,18 +39,28 @@ let items = [
     },
 ];
 
-// GET all items
-export async function GET() {
+// 🔹 GET → all items OR single item by query
+// /api/items
+// /api/items?id=1
+export async function GET(req) {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (id) {
+        const item = items.find((i) => i.id === id);
+        return NextResponse.json(item || null);
+    }
+
     return NextResponse.json(items);
 }
 
-// POST add new item (memory only)
+// 🔹 POST → add new item (memory only)
 export async function POST(req) {
     try {
         const body = await req.json();
         const { name, price, image, description, category } = body;
 
-        if (!name || !price) {
+        if (!name || price === undefined) {
             return NextResponse.json(
                 { message: "Name and price required" },
                 { status: 400 }
@@ -71,8 +81,8 @@ export async function POST(req) {
         items.push(newItem);
 
         return NextResponse.json(newItem, { status: 201 });
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        console.error("POST /api/items error:", error);
         return NextResponse.json(
             { message: "Internal Server Error" },
             { status: 500 }
