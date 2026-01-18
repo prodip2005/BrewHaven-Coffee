@@ -1,10 +1,16 @@
 export const dynamic = "force-dynamic";
 
 import ItemsList from "@/components/ItemsList";
+import { headers } from "next/headers";
 
 async function getItems() {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
+        const headersList = headers();
+        const host = headersList.get("host");
+
+        const baseUrl = host
+            ? `https://${host}`
+            : process.env.NEXT_PUBLIC_VERCEL_URL;
 
         const res = await fetch(`${baseUrl}/api/items`, {
             cache: "no-store",
@@ -36,7 +42,13 @@ export default async function ItemsPage() {
                     </p>
                 </div>
 
-                <ItemsList initialItems={items} />
+                {items.length === 0 ? (
+                    <p className="text-center text-gray-500">
+                        No items found.
+                    </p>
+                ) : (
+                    <ItemsList initialItems={items} />
+                )}
             </div>
         </div>
     );
