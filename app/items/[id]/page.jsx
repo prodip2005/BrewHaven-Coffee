@@ -14,7 +14,9 @@ export default function ItemDetailsPage({ params }) {
         fetch("/api/items", { cache: "no-store" })
             .then((res) => res.json())
             .then((items) => {
-                const found = items.find((i) => i.id === id);
+                const found = items.find(
+                    (i) => String(i.id) === String(id)
+                );
                 setItem(found || null);
             })
             .catch((err) => {
@@ -70,7 +72,7 @@ export default function ItemDetailsPage({ params }) {
                             {item.name}
                         </h1>
                         <p className="text-2xl font-semibold mb-4 text-[#6F4E37]">
-                            ${item.price.toFixed(2)}
+                            ${Number(item.price).toFixed(2)}
                         </p>
                         <p className="text-gray-600">
                             {item.description}
