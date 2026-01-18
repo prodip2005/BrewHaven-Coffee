@@ -1,17 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function ItemDetailsPage({ params }) {
-    const { id } = params;
+export default function ItemDetailsPage() {
+    const { id } = useParams(); // ✅ CORRECT WAY
+   
+    
 
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!id) return;
+
         fetch("/api/items", { cache: "no-store" })
             .then((res) => res.json())
             .then((items) => {
@@ -19,6 +24,10 @@ export default function ItemDetailsPage({ params }) {
                     (i) => String(i.id) === String(id)
                 );
                 setItem(found || null);
+            })
+            .catch((err) => {
+                console.error("Error fetching item:", err);
+                setItem(null);
             })
             .finally(() => setLoading(false));
     }, [id]);
